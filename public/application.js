@@ -14,9 +14,10 @@ $(document).ready(function(){
 
     $('td').on('click', function(){
         var element = this;
-        if (!board.winner() && move === 9 ){
+        if (!board.winner() && move === 8 ){
          $('.gameover').text("Draw!");
          $('.gameover').show();
+         $('.reset').show();
         }
         var location = this.id[1] + this.id[2];
         if (move % 2 === 0) {
