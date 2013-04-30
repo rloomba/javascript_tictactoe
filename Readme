@@ -1,0 +1,4 @@
+Dependencies: JQuery
+
+Click on a square with your mouse to select a square. Once a winner or draw
+is determined, you can click reset to start another round.

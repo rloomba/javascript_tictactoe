@@ -13,12 +13,7 @@ $(document).ready(function(){
     // }; refactoring, ran out of time
 
     $('td').on('click', function(){
-      console.log(move);
         var element = this;
-        if (!board.winner() && move === 9 ){
-         $('.gameover').text("Draw!");
-         $('.gameover').show();
-        }
         var location = this.id[1] + this.id[2];
         if (move % 2 === 0) {
             this.innerHTML = "X";
@@ -27,6 +22,7 @@ $(document).ready(function(){
             if(board.winner()) {
                 $('.gameover').text(board.winner() === "X" ? "Player A wins" : "Player B wins");
                 $('.gameover').show();
+                $('.move').hide();
                 $('.reset').show();
             }
         }
@@ -34,14 +30,19 @@ $(document).ready(function(){
             this.innerHTML = "O";
             $('.move').text("Player A's Move");
             board.setSquare(location[0], location[1], "O");
-            console.log(board.boardArray);
             if(board.winner()){
                 $('.gameover').text(board.winner() === "X" ? "Player A wins" : "Player B wins");
                 $('.gameover').show();
+                $('.move').hide();
                 $('.reset').show();
             }
         }
-        move += 1;
+        // move += 1;
+        if (move === 8 && board.winner() === null ){
+          $('.gameover').text("Draw!");
+          $('.gameover').show();
+          $('.reset').show();
+          }
     });
 
   $('.reset').on('click', function(){
